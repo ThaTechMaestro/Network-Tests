@@ -11,14 +11,14 @@
 
 
 ## Important Technical details 
-For **Linux** OS
+For **Linux** Operating System (OS)
 
 A process has three streams for a command to be executed in Linux:
    * Stdin: Standard input
    * Stdout: Standard output
    * Stderr: Standard error
 
-/dev/null : It discards anything written to it
+/dev/null : It discards anything written to it.
 
 ---
 
