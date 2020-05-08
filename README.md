@@ -5,8 +5,8 @@
 * These commands are executed as processes.
 * The results of these processes are evaluated to determine if the connection was successful
 * These results are called status codes
-    * 0: Represents Succesfull connection
-    * 1-250+: Represents unsuccessfull conecction
+    * 0: Represents Succesfull connections
+    * 1-250+: Represents unsuccessfull conecctions
 
 
 
