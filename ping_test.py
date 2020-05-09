@@ -3,17 +3,18 @@ import platform
 import subprocess
 
 
-name_of_platform = platform.system()
-"""
-    This returns the name of your System Operating System
-    This is stored in "name_of_platform"
-"""
-
 def ping_host(name_of_host):
     """
         name_of_host -> parameter for hosted websites to be tested
                         for netwoork connectivity
     """
+
+    name_of_platform = platform.system()
+    """
+        This returns the name of your System Operating System
+        This is stored in "name_of_platform"
+    """
+    
 
     try:
         """
@@ -43,41 +44,52 @@ def ping_host(name_of_host):
             """
                 For Linux OS
             """
-            status_code = subprocess.call(['ping', '-n', '5', '-W', '3', name_of_host],
+            status_code = subprocess.call(['ping', '-c', '5', '-W', '3', name_of_host],
                                         stdout=open(os.devnull, 'w'),
                                         stderr=open(os.devnull, 'w'))
-
-
-        print('Networking Results")
 
         if status_code == 0:
             print('Name of host: ', name_of_host)
             print("Connection result: Sucessful")
-            print('Host is up and running')
+            print('Host is up and running\n\n')
         elif status_code == 1 or 2 or 256 or 512:
             print('Name of host: ', name_of_host)
             print("Connection result: Unsucessful")
-            print('Host is down')
-        except Exception:
-            """
-                Other values or unknown errors are captured here and 
-                acted on with the code below
-            """
-            print('Name of host: ', name_of_host)
-            print("Connection result: Unsucessful")
-            print('Host is Unreachable')
+            print('Host is down\n\n')
 
-        return response
+    except Exception:
+        """
+            Other values or unknown errors are captured here and 
+            acted on with the code below
+        """
+        print('Name of host: ', name_of_host)
+        print("Connection result: Unsucessful")
+        print('Host is Unreachable\n\n')
+
+    return status_code
 
 
 def verify_hosts(list_of_hosts):
     host_status_code = dict()
 
+    print("Networking Results\n\n")
     for name_of_host in list_of_hosts:
         host_status_code[name_of_host] = ping_host(name_of_host)
     return host_status_code
 
 
+if __name__ == '__main__':
+    
+    hosts_list = [
+        'google.com',
+        'twitter.com',
+        'linkedin.com',
+        'instagram.com',
+        'medium.com'
+    ]
+
+    status_code_results = verify_hosts(hosts_list)
+    print(status_code_results)
 
             
         
